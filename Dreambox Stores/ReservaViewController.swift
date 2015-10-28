@@ -17,6 +17,8 @@ class ReservaViewController : UIViewController {
     var fecha = UILabel()
     var hora = UILabel()
     var token: String = ""
+    let confirmed = UISwitch()
+    let canceled = UISwitch()
     
     init() {
         super.init(nibName:nil, bundle: nil)
@@ -128,7 +130,8 @@ class ReservaViewController : UIViewController {
                                             self.reserva = Reserva()
                                             self.reserva!.cliente = (elementDic["cliente"] as? String)!
                                             self.reserva!.cod_reserva = (elementDic["cod_reserva"] as? String)!
-                                            self.reserva!.estado = (elementDic["estado"] as? String)!
+                                            self.reserva!.id_estado = "5"
+                                            //self.reserva!.estado = (elementDic["estado"] as? String)!
                                             
                                             if elementDic["fecha"] as? String == ""{
                                                 let date = NSDate()
@@ -139,7 +142,6 @@ class ReservaViewController : UIViewController {
                                                 self.reserva!.fecha = date!.dateByAddingTimeInterval(60*60*5)
                                             }
                                             
-                                            self.reserva!.id_estado = (elementDic["id_estado"] as? String)!
                                             self.reserva!.id_paquete = (elementDic["id_paquete"] as? String)!
                                             self.reserva!.id_proveedor = (elementDic["id_proveedor"] as? String)!
                                             self.reserva!.nom_proveedor = (elementDic["nom_proveedor"] as? String)!
@@ -306,19 +308,81 @@ class ReservaViewController : UIViewController {
             make.bottom.equalTo(self.view.snp_bottom)
             make.centerX.equalTo(self.view)
         }
+        
+        
+        let completeLabel = UILabel()
+        completeLabel.text = "Marcar como completada"
+        completeLabel.font = UIFont(name: completeLabel.font.fontName, size: 10)
+        container.addSubview(completeLabel)
+        completeLabel.snp_makeConstraints{ (make) -> Void in
+            make.top.equalTo(fechaContainer.snp_bottom).offset(30)
+            make.left.equalTo(fechaContainer.snp_left).offset(5)
+        }
+        
+        self.confirmed.setOn(self.reserva?.id_estado == "8", animated: false)
+        self.confirmed.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        container.addSubview(confirmed)
+        self.confirmed.snp_makeConstraints{ (make) -> Void in
+            make.top.equalTo(fechaContainer.snp_bottom).offset(20)
+            make.height.equalTo(40)
+            make.right.equalTo(fechaContainer.snp_right).offset(-15)
+        }
+        if (offset == 60){
+            self.confirmed.setValue(true, forKey: "hidden")
+        }
+
+        let cancelLabel = UILabel()
+        cancelLabel.text = "Marcar como cancelada"
+        cancelLabel.font = UIFont(name: cancelLabel.font.fontName, size: 10)
+        container.addSubview(cancelLabel)
+        cancelLabel.snp_makeConstraints{ (make) -> Void in
+            make.top.equalTo(self.confirmed.snp_bottom).offset(30)
+            make.left.equalTo(fechaContainer.snp_left).offset(5)
+        }
+        
+        self.canceled.setOn(self.reserva?.id_estado == "6", animated: false)
+        self.canceled.addTarget(self, action: Selector("stateChangedCanceled:"), forControlEvents: UIControlEvents.ValueChanged)
+        container.addSubview(canceled)
+        self.canceled.snp_makeConstraints{ (make) -> Void in
+            make.top.equalTo(self.confirmed.snp_bottom).offset(20)
+            make.height.equalTo(40)
+            make.right.equalTo(self.confirmed.snp_right)
+        }
+        if (offset == 60){
+            self.confirmed.setValue(true, forKey: "hidden")
+            self.canceled.setValue(true, forKey: "hidden")
+        }else{
+            if self.canceled.on {
+                self.confirmed.enabled = false
+            }
+        }
+    
     }
 
+    func stateChanged(switchState: UISwitch) {
+        if switchState.on {
+            self.reserva?.id_estado = "8"
+        } else {
+            self.reserva?.id_estado = "5"
+        }
+    }
+
+    func stateChangedCanceled(switchState: UISwitch) {
+        if switchState.on {
+            self.reserva?.id_estado = "6"
+            self.confirmed.enabled = false
+        } else {
+            self.confirmed.enabled = true
+            stateChanged(self.confirmed)
+        }
+    }
+    
     func update(sender: UIButton!) {
         
         let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         let components = calendar.components([NSCalendarUnit.Year,NSCalendarUnit.Month,NSCalendarUnit.Day,NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: (self.reserva?.fecha)!)
         let fecha = String(components.year) + "-" + String(components.month) + "-" + String(components.day)
         
-        if self.reserva!.id_estado == "5" || self.reserva!.id_estado == "7"{
-            self.reserva!.id_estado = "7"
-        }else{
-            self.reserva!.id_estado = "5"
-        }
         let parameters = ["fecha":fecha,"hora":String(components.hour),"minuto":String(components.minute),"id_estado":self.reserva!.id_estado as String,"id_paquete":self.reserva!.id_paquete as String,"cod_reserva":self.reserva!.cod_reserva as String]
         let headers = ["Code": token]
         Alamofire.request(.POST, "http://dreambox.com.ec/APP/actualizarReserva.php", parameters: parameters, headers: headers, encoding: .JSON).response { (request, response, data, error) -> Void in

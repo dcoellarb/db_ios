@@ -217,7 +217,7 @@ class ReservasListViewController: UIViewController {
         
     }
     internal func filterCompletadasAction(){
-        self.id_estado = "6"
+        self.id_estado = "8"
         LoadData()
         filters()
         
@@ -227,7 +227,7 @@ class ReservasListViewController: UIViewController {
         
     }
     internal func filterCanceladasAction(){
-        self.id_estado = "8"
+        self.id_estado = "6"
         LoadData()
         filters()
         
@@ -399,14 +399,11 @@ extension ReservasListViewController : UITableViewDelegate{
     internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedReserva = reservas[indexPath.row]
         
-        if selectedReserva.id_estado == "5" || selectedReserva.id_estado == "7" {
-            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
             
-            // Set up the detail view controller to show.
-            let detailViewController = ReservaViewController(reserva: selectedReserva)
-            navigationController?.pushViewController(detailViewController, animated: true)
-        }
-        
+        // Set up the detail view controller to show.
+        let detailViewController = ReservaViewController(reserva: selectedReserva)
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 
