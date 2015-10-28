@@ -82,7 +82,7 @@ class ReservaViewController : UIViewController {
     }
     
     func validate(sender: UIButton!) {
-        let parameters = ["codigo":codigo.text! as String]
+        let parameters = ["cod_reserva":codigo.text! as String]
         let headers = ["Code": token]
         Alamofire.request(.POST, "http://dreambox.com.ec/APP/abrirReserva.php", parameters: parameters, headers: headers, encoding: .JSON).response { (request, response, data, error) -> Void in
             
@@ -92,19 +92,62 @@ class ReservaViewController : UIViewController {
                     if let jsonResponse = json as? NSDictionary {
                         if let jsonError = jsonResponse["error"]{
                             if let jsonErrorArray = jsonError as? NSArray{
+                                var isWrongUser = false
                                 for element in jsonErrorArray {
                                     print("\(element) ")
+                                    if let jsonError = element as? NSDictionary{
+                                        if let cod = jsonError["codigo"] as? NSNumber{
+                                            if cod == 100{
+                                                isWrongUser = true
+                                            }
+                                        }
+                                    }
                                 }
                                 
-                                let alert = UIAlertController(title: "Error", message: "No se pudo validar el codigo de la reservar, por favor intente de nuevo o contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
-                                alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
-                                self.presentViewController(alert, animated: true, completion: nil)
+                                if isWrongUser{
+                                    let loginController = LoginViewController()
+                                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                                    appDelegate.window!.rootViewController = loginController
+                                }else{
+                                    let alert = UIAlertController(title: "Error", message: "No se pudo validar el codigo de la reservar, por favor intente de nuevo o contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
+                                    alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
+                                    self.presentViewController(alert, animated: true, completion: nil)
+                                }
+                                
                             }
                         }else{
-                            self.reserva = Reserva()
-                            self.reserva!.cliente = "Daniel Coellar"
-                            self.reserva!.paquete = "Inpusm dolo"
-                            self.reserva!.fecha = NSDate()
+                            if let datos = jsonResponse["datos"]{
+                                if let datosArray = datos as? NSArray{
+                                    
+                                    let dateFormatter = NSDateFormatter()
+                                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzzz"
+                                    
+                                    for element in datosArray {
+                                        print("\(element) ")
+                                        if let elementDic = element as? NSDictionary{
+                                            self.reserva = Reserva()
+                                            self.reserva!.cliente = (elementDic["cliente"] as? String)!
+                                            self.reserva!.cod_reserva = (elementDic["cod_reserva"] as? String)!
+                                            self.reserva!.estado = (elementDic["estado"] as? String)!
+                                            
+                                            if elementDic["fecha"] as? String == ""{
+                                                let date = NSDate()
+                                                self.reserva!.fecha = date
+                                            }else{
+                                                let reservaFechaStr = (elementDic["fecha"] as? String)! + " +0000"
+                                                let date = dateFormatter.dateFromString(reservaFechaStr)
+                                                self.reserva!.fecha = date!.dateByAddingTimeInterval(60*60*5)
+                                            }
+                                            
+                                            self.reserva!.id_estado = (elementDic["id_estado"] as? String)!
+                                            self.reserva!.id_paquete = (elementDic["id_paquete"] as? String)!
+                                            self.reserva!.id_proveedor = (elementDic["id_proveedor"] as? String)!
+                                            self.reserva!.nom_proveedor = (elementDic["nom_proveedor"] as? String)!
+                                            self.reserva!.paquete = (elementDic["paquete"] as? String)!
+                                        }
+                                    }
+                                }
+                            }
                             
                             self.codigo.enabled = false
                             self.codigo.backgroundColor = UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0)
@@ -149,7 +192,7 @@ class ReservaViewController : UIViewController {
         
         
         let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
-        imageView.backgroundColor = UIColor(red: 185.0/255.0, green: 207.0/255.0, blue: 55.0/255.0, alpha: 1.0)
+        imageView.backgroundColor = UIColor(red: 246.0/255.0, green: 181.0/255.0, blue: 29.0/255.0, alpha: 1.0)
         imageView.layer.cornerRadius = 5.0
         imageView.image = UIImage(named: "Profile")
         container.addSubview(imageView)
@@ -271,6 +314,11 @@ class ReservaViewController : UIViewController {
         let components = calendar.components([NSCalendarUnit.Year,NSCalendarUnit.Month,NSCalendarUnit.Day,NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: (self.reserva?.fecha)!)
         let fecha = String(components.year) + "-" + String(components.month) + "-" + String(components.day)
         
+        if self.reserva!.id_estado == "5" || self.reserva!.id_estado == "7"{
+            self.reserva!.id_estado = "7"
+        }else{
+            self.reserva!.id_estado = "5"
+        }
         let parameters = ["fecha":fecha,"hora":String(components.hour),"minuto":String(components.minute),"id_estado":self.reserva!.id_estado as String,"id_paquete":self.reserva!.id_paquete as String,"cod_reserva":self.reserva!.cod_reserva as String]
         let headers = ["Code": token]
         Alamofire.request(.POST, "http://dreambox.com.ec/APP/actualizarReserva.php", parameters: parameters, headers: headers, encoding: .JSON).response { (request, response, data, error) -> Void in
@@ -281,13 +329,27 @@ class ReservaViewController : UIViewController {
                     if let jsonResponse = json as? NSDictionary {
                         if let jsonError = jsonResponse["error"]{
                             if let jsonErrorArray = jsonError as? NSArray{
+                                var isWrongUser = false
                                 for element in jsonErrorArray {
                                     print("\(element) ")
+                                    if let jsonError = element as? NSDictionary{
+                                        if let cod = jsonError["codigo"] as? NSNumber{
+                                            if cod == 100{
+                                                isWrongUser = true
+                                            }
+                                        }
+                                    }
                                 }
                                 
-                                let alert = UIAlertController(title: "Error", message: "No se pudo actualizar la reserva, por favor contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
-                                alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
-                                self.presentViewController(alert, animated: true, completion: nil)
+                                if isWrongUser{
+                                    let loginController = LoginViewController()
+                                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                                    appDelegate.window!.rootViewController = loginController
+                                }else{
+                                    let alert = UIAlertController(title: "Error", message: "No se pudo actualizar la reserva, por favor contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
+                                    alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
+                                    self.presentViewController(alert, animated: true, completion: nil)
+                                }
                             }
                         }
                         self.navigationController!.popViewControllerAnimated(true)

@@ -12,19 +12,17 @@
 		5710950D1BD5FC8200F9411D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5710950C1BD5FC8200F9411D /* Assets.xcassets */; };
 		5710951B1BD5FC8300F9411D /* Dreambox_StoresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5710951A1BD5FC8300F9411D /* Dreambox_StoresTests.swift */; };
 		571095261BD5FC8300F9411D /* Dreambox_StoresUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571095251BD5FC8300F9411D /* Dreambox_StoresUITests.swift */; };
-		571095381BD6049400F9411D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 571095351BD6049400F9411D /* SnapKit.framework */; };
-		571095391BD6049400F9411D /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 571095361BD6049400F9411D /* SwiftyJSON.framework */; };
-		5710953A1BD6062000F9411D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 571095341BD6049400F9411D /* Alamofire.framework */; };
-		5710953D1BD6854D00F9411D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5710953C1BD6854D00F9411D /* NavigationViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		5710953E1BD6854D00F9411D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5710953C1BD6854D00F9411D /* NavigationViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		5710953F1BD6854D00F9411D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5710953C1BD6854D00F9411D /* NavigationViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		575A94E11BD9E6E400BE4777 /* ProfileBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A94E01BD9E6E400BE4777 /* ProfileBackground.swift */; settings = {ASSET_TAGS = (); }; };
-		578EEAF51BDB306400AEE332 /* ReservaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EEAF41BDB306400AEE332 /* ReservaViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		578EEAF91BDC123D00AEE332 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EEAF81BDC123D00AEE332 /* DatePickerDialog.swift */; settings = {ASSET_TAGS = (); }; };
-		57F2613E1BD7193C00958ADA /* Reserva.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F2613D1BD7193C00958ADA /* Reserva.swift */; settings = {ASSET_TAGS = (); }; };
-		57F2613F1BD7193C00958ADA /* Reserva.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F2613D1BD7193C00958ADA /* Reserva.swift */; settings = {ASSET_TAGS = (); }; };
-		57F261401BD7193C00958ADA /* Reserva.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F2613D1BD7193C00958ADA /* Reserva.swift */; settings = {ASSET_TAGS = (); }; };
-		57F261421BD7232400958ADA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F261411BD7232400958ADA /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		5710953D1BD6854D00F9411D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5710953C1BD6854D00F9411D /* NavigationViewController.swift */; };
+		5710953E1BD6854D00F9411D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5710953C1BD6854D00F9411D /* NavigationViewController.swift */; };
+		5710953F1BD6854D00F9411D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5710953C1BD6854D00F9411D /* NavigationViewController.swift */; };
+		575A94E11BD9E6E400BE4777 /* ProfileBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A94E01BD9E6E400BE4777 /* ProfileBackground.swift */; };
+		578EEAF51BDB306400AEE332 /* ReservaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EEAF41BDB306400AEE332 /* ReservaViewController.swift */; };
+		578EEAF91BDC123D00AEE332 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EEAF81BDC123D00AEE332 /* DatePickerDialog.swift */; };
+		57F2613E1BD7193C00958ADA /* Reserva.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F2613D1BD7193C00958ADA /* Reserva.swift */; };
+		57F2613F1BD7193C00958ADA /* Reserva.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F2613D1BD7193C00958ADA /* Reserva.swift */; };
+		57F261401BD7193C00958ADA /* Reserva.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F2613D1BD7193C00958ADA /* Reserva.swift */; };
+		57F261421BD7232400958ADA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F261411BD7232400958ADA /* LoginViewController.swift */; };
+		7E9A3838BF484A76F186C043 /* Pods_Dreambox_Stores.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2329F76B7B9D791652D3E19F /* Pods_Dreambox_Stores.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2329F76B7B9D791652D3E19F /* Pods_Dreambox_Stores.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dreambox_Stores.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		571095021BD5FC8200F9411D /* Dreambox Stores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dreambox Stores.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		571095051BD5FC8200F9411D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		571095071BD5FC8200F9411D /* ReservasListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservasListViewController.swift; sourceTree = "<group>"; };
@@ -56,15 +55,14 @@
 		571095211BD5FC8300F9411D /* Dreambox StoresUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dreambox StoresUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		571095251BD5FC8300F9411D /* Dreambox_StoresUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dreambox_StoresUITests.swift; sourceTree = "<group>"; };
 		571095271BD5FC8300F9411D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		571095341BD6049400F9411D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		571095351BD6049400F9411D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
-		571095361BD6049400F9411D /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		5710953C1BD6854D00F9411D /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		575A94E01BD9E6E400BE4777 /* ProfileBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileBackground.swift; sourceTree = "<group>"; };
 		578EEAF41BDB306400AEE332 /* ReservaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservaViewController.swift; sourceTree = "<group>"; };
 		578EEAF81BDC123D00AEE332 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		57F2613D1BD7193C00958ADA /* Reserva.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reserva.swift; sourceTree = "<group>"; };
 		57F261411BD7232400958ADA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8FD3DA172309579EBEB40F66 /* Pods-Dreambox Stores.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dreambox Stores.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dreambox Stores/Pods-Dreambox Stores.release.xcconfig"; sourceTree = "<group>"; };
+		EF3A84A3A36DF343BB0EE931 /* Pods-Dreambox Stores.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dreambox Stores.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dreambox Stores/Pods-Dreambox Stores.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5710953A1BD6062000F9411D /* Alamofire.framework in Frameworks */,
-				571095381BD6049400F9411D /* SnapKit.framework in Frameworks */,
-				571095391BD6049400F9411D /* SwiftyJSON.framework in Frameworks */,
+				7E9A3838BF484A76F186C043 /* Pods_Dreambox_Stores.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,16 +91,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EEDC4B02B02103444B7AD95 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EF3A84A3A36DF343BB0EE931 /* Pods-Dreambox Stores.debug.xcconfig */,
+				8FD3DA172309579EBEB40F66 /* Pods-Dreambox Stores.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		571094F91BD5FC8200F9411D = {
 			isa = PBXGroup;
 			children = (
-				571095341BD6049400F9411D /* Alamofire.framework */,
-				571095351BD6049400F9411D /* SnapKit.framework */,
-				571095361BD6049400F9411D /* SwiftyJSON.framework */,
 				571095041BD5FC8200F9411D /* Dreambox Stores */,
 				571095191BD5FC8300F9411D /* Dreambox StoresTests */,
 				571095241BD5FC8300F9411D /* Dreambox StoresUITests */,
 				571095031BD5FC8200F9411D /* Products */,
+				3EEDC4B02B02103444B7AD95 /* Pods */,
+				E0F4B2205B25600882FA90FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +157,14 @@
 			path = "Dreambox StoresUITests";
 			sourceTree = "<group>";
 		};
+		E0F4B2205B25600882FA90FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2329F76B7B9D791652D3E19F /* Pods_Dreambox_Stores.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,10 +172,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5710952A1BD5FC8300F9411D /* Build configuration list for PBXNativeTarget "Dreambox Stores" */;
 			buildPhases = (
+				EE5472F2A45D9AE265B209CD /* Check Pods Manifest.lock */,
 				571094FE1BD5FC8200F9411D /* Sources */,
 				571094FF1BD5FC8200F9411D /* Frameworks */,
 				571095001BD5FC8200F9411D /* Resources */,
-				5710953B1BD6068D00F9411D /* ShellScript */,
+				B17322BC20D715C2FA6B810B /* Embed Pods Frameworks */,
+				48F78BA51437C5A003F31972 /* Copy Pods Resources */,
+				579746FB1BE04A2700BA1730 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -221,6 +236,7 @@
 				TargetAttributes = {
 					571095011BD5FC8200F9411D = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 8H73X3AX57;
 					};
 					571095151BD5FC8300F9411D = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -278,21 +294,63 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5710953B1BD6068D00F9411D /* ShellScript */ = {
+		48F78BA51437C5A003F31972 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dreambox Stores/Pods-Dreambox Stores-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		579746FB1BE04A2700BA1730 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 41ad49d43471dd3e631b695825140071ff1aeb6c 81eeacf09f6795a123db1f81b0b4681c4bff2528efde874185b2adb21ddaa1c1";
+		};
+		B17322BC20D715C2FA6B810B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dreambox Stores/Pods-Dreambox Stores-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE5472F2A45D9AE265B209CD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -368,6 +426,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -384,7 +443,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -412,6 +471,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -422,7 +482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -431,33 +491,37 @@
 		};
 		5710952B1BD5FC8300F9411D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF3A84A3A36DF343BB0EE931 /* Pods-Dreambox Stores.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Dreambox Stores/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dreambox.Dreambox-Stores";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dreambox.Dreambox-Stores";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		5710952C1BD5FC8300F9411D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FD3DA172309579EBEB40F66 /* Pods-Dreambox Stores.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Dreambox Stores/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dreambox.Dreambox-Stores";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dreambox.Dreambox-Stores";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

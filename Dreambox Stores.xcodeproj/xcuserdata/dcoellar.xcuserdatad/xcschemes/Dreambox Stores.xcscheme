@@ -106,6 +106,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Dreambox Stores"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

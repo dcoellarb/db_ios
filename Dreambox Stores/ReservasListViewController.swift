@@ -27,6 +27,7 @@ class ReservasListViewController: UIViewController {
     let filterCompletadas = UILabel()
     let filterCanceladas = UILabel()
     let filterTitle = UILabel()
+    var refreshControl:UIRefreshControl!
     
     
     /// State restoration values.
@@ -75,6 +76,11 @@ class ReservasListViewController: UIViewController {
             make.right.equalTo(self.view)
         }
         
+        self.refreshControl = UIRefreshControl()
+        //self.refreshControl.attributedTitle = NSAttributedString(string: "Refrescar")
+        self.refreshControl.addTarget(self, action: "LoadData", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
+        
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.sizeToFit()
@@ -102,7 +108,7 @@ class ReservasListViewController: UIViewController {
         }
         
         let filterHeader = UIView()
-        filterHeader.backgroundColor = UIColor(red: 185.0/255.0, green: 207.0/255.0, blue: 55.0/255.0, alpha: 1.0)
+        filterHeader.backgroundColor = UIColor(red: 246.0/255.0, green: 181.0/255.0, blue: 29.0/255.0, alpha: 1.0)
         self.filterContainer.addSubview(filterHeader)
         filterHeader.snp_makeConstraints{
             $0.top.equalTo(self.filterContainer.snp_top)
@@ -283,7 +289,7 @@ class ReservasListViewController: UIViewController {
                                     for element in jsonErrorArray {
                                         print("\(element) ")
                                         if let jsonError = element as? NSDictionary{
-                                            if let cod = jsonError["codigo"] as? Int64{
+                                            if let cod = jsonError["codigo"] as? NSNumber{
                                                 if cod == 100{
                                                     isWrongUser = true
                                                 }
@@ -323,6 +329,7 @@ class ReservasListViewController: UIViewController {
                                             reserva.nom_proveedor = (elementDic["nom_proveedor"] as? String)!
                                             reserva.paquete = (elementDic["paquete"] as? String)!
                                             self.reservas.append(reserva)
+                                            
                                         }
                                     }
                                 }
@@ -337,6 +344,7 @@ class ReservasListViewController: UIViewController {
                 let count = String(self.reservas.count)
                 print("reloading data:" + count)
                 self.tableView.reloadData();
+                self.refreshControl.endRefreshing()
         }
     }
 }
@@ -391,11 +399,14 @@ extension ReservasListViewController : UITableViewDelegate{
     internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedReserva = reservas[indexPath.row]
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        if selectedReserva.id_estado == "5" || selectedReserva.id_estado == "7" {
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            
+            // Set up the detail view controller to show.
+            let detailViewController = ReservaViewController(reserva: selectedReserva)
+            navigationController?.pushViewController(detailViewController, animated: true)
+        }
         
-        // Set up the detail view controller to show.
-        let detailViewController = ReservaViewController(reserva: selectedReserva)
-        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 

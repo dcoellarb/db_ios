@@ -1,3 +1,0 @@
-github "Alamofire/Alamofire" ~> 3.0
-github "SwiftyJSON/SwiftyJSON"
-github "SnapKit/SnapKit" >= 0.15.0
