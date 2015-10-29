@@ -431,7 +431,7 @@ extension ReservasListViewController : UITableViewDataSource{
         cellView?.labelCliente.text = reservas[indexPath.row].cliente
         cellView?.labelPaquete.text = reservas[indexPath.row].paquete
         cellView?.labelFecha.text = formatDate(reservas[indexPath.row].fecha)
-        //cellView?.labelHora.text = reservas[indexPath.row].cliente
+        cellView?.labelHora.text = formatTime(reservas[indexPath.row].fecha)
         
         
         return cellView!
@@ -445,6 +445,23 @@ extension ReservasListViewController : UITableViewDataSource{
         let day = components.day
         
         return getMonthName(month) + " " + String(day)
+    }
+
+    internal func formatTime(date: NSDate) -> String{
+        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: date)
+        
+        var am_pm = "am"
+        var hour = components.hour
+        if components.hour > 11{
+            am_pm = "pm"
+        }
+        if components.hour > 12{
+            hour = hour - 12
+        }
+        let minute = components.minute
+        
+        return String(hour) + ":" + String(minute) + am_pm
     }
     
     internal func getMonthName(month: Int) -> String {
@@ -482,7 +499,7 @@ extension ReservasListViewController : UITableViewDataSource{
     Returns the cell height
     */
     internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        return 50.0
+        return 55.0
     }
     
     
@@ -538,7 +555,7 @@ class ReservaTableViewCell : UITableViewCell{
             $0.left.equalTo(contentView.snp_left)
             $0.top.equalTo(contentView.snp_top)
             $0.width.equalTo(contentView.snp_width)
-            $0.height.equalTo(40)
+            $0.height.equalTo(45)
         }
 
         let separator = CGRect(x: 0, y: 0, width: 100, height: 1)
@@ -583,7 +600,7 @@ class ReservaTableViewCell : UITableViewCell{
         }
 
         backgroundView.addSubview(labelFecha)
-        labelFecha.font = UIFont(name: labelFecha.font.fontName, size: 10)
+        labelFecha.font = UIFont(name: labelFecha.font.fontName, size: 12)
         labelFecha.textColor = UIColor(red: 185.0/255.0, green: 207.0/255.0, blue: 55.0/255.0, alpha: 1.0)
         labelFecha.snp_makeConstraints{
             $0.right.equalTo(backgroundView.snp_right).offset(-5)
@@ -594,7 +611,7 @@ class ReservaTableViewCell : UITableViewCell{
         backgroundView.addSubview(labelHora)
         labelHora.font = UIFont(name: labelHora.font.fontName, size: 10)
         labelHora.snp_makeConstraints{
-            $0.right.equalTo(backgroundView.snp_right).offset(5)
+            $0.right.equalTo(backgroundView.snp_right).offset(-5)
             $0.top.equalTo(labelCliente.snp_bottom)
             $0.height.equalTo(20)
         }
