@@ -49,6 +49,10 @@ class ReservasListViewController: UIViewController {
         super.viewDidLoad()
         
         self.title="Dreambox Stores"
+        let btnLogout = UIBarButtonItem(title: "Cerrar", style: .Plain, target: self, action: "logout")
+        btnLogout.tintColor = UIColor.whiteColor()
+        self.navigationItem.rightBarButtonItem = btnLogout
+        
         
         let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "add")
         addButton.tintColor = UIColor(red: 231.0/255.0, green: 31.0/255.0, blue: 116.0/255.0, alpha: 1.0)
@@ -191,6 +195,15 @@ class ReservasListViewController: UIViewController {
         self.definesPresentationContext = true
     }
 
+    internal func logout(){
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("token")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        let loginViewController = LoginViewController()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window!.rootViewController = loginViewController
+    }
+
     internal func add(){
         let detailViewController = ReservaViewController()
         navigationController?.pushViewController(detailViewController, animated: true)
@@ -287,7 +300,6 @@ class ReservasListViewController: UIViewController {
                                 if let jsonErrorArray = jsonError as? NSArray{
                                     var isWrongUser = false
                                     for element in jsonErrorArray {
-                                        print("\(element) ")
                                         if let jsonError = element as? NSDictionary{
                                             if let cod = jsonError["codigo"] as? NSNumber{
                                                 if cod == 100{
@@ -312,7 +324,6 @@ class ReservasListViewController: UIViewController {
                                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzzz"
                                     
                                     for element in datosArray {
-                                        print("\(element) ")
                                         if let elementDic = element as? NSDictionary{
                                             let reserva = Reserva()
                                             reserva.cliente = (elementDic["cliente"] as? String)!
@@ -337,12 +348,8 @@ class ReservasListViewController: UIViewController {
                         }
                     }catch{
                     }
-                }else{
-                    print("Error - \(error!.localizedDescription)")
                 }
                 
-                let count = String(self.reservas.count)
-                print("reloading data:" + count)
                 self.tableView.reloadData();
                 self.refreshControl.endRefreshing()
         }

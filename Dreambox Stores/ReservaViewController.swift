@@ -42,8 +42,7 @@ class ReservaViewController : UIViewController {
         
         self.navigationController!.setToolbarHidden(true, animated: false)
         
-        if let selectedReserva = self.reserva {
-            print(selectedReserva.cod_reserva)
+        if let _ = self.reserva {
             setBody(self.view,offset: 70)
         }else{
             setHeader()
@@ -96,7 +95,6 @@ class ReservaViewController : UIViewController {
                             if let jsonErrorArray = jsonError as? NSArray{
                                 var isWrongUser = false
                                 for element in jsonErrorArray {
-                                    print("\(element) ")
                                     if let jsonError = element as? NSDictionary{
                                         if let cod = jsonError["codigo"] as? NSNumber{
                                             if cod == 100{
@@ -125,7 +123,6 @@ class ReservaViewController : UIViewController {
                                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzzz"
                                     
                                     for element in datosArray {
-                                        print("\(element) ")
                                         if let elementDic = element as? NSDictionary{
                                             self.reserva = Reserva()
                                             self.reserva!.cliente = (elementDic["cliente"] as? String)!
@@ -160,11 +157,15 @@ class ReservaViewController : UIViewController {
                         }
                     }
                 } catch {
-                    print("error throw in catch")
+                    let alert = UIAlertController(title: "Error", message: "No se pudo validar el codigo de la reservar, por favor intente de nuevo o contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
                 }
                 
             }else{
-                print("Error - \(error!.localizedDescription)")
+                let alert = UIAlertController(title: "Error", message: "No se pudo validar el codigo de la reservar, por favor intente de nuevo o contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
         }
     }
@@ -395,7 +396,6 @@ class ReservaViewController : UIViewController {
                             if let jsonErrorArray = jsonError as? NSArray{
                                 var isWrongUser = false
                                 for element in jsonErrorArray {
-                                    print("\(element) ")
                                     if let jsonError = element as? NSDictionary{
                                         if let cod = jsonError["codigo"] as? NSNumber{
                                             if cod == 100{
@@ -419,14 +419,12 @@ class ReservaViewController : UIViewController {
                         self.navigationController!.popViewControllerAnimated(true)
                     }
                 } catch {
-                    print("error throw in catch")
                     let alert = UIAlertController(title: "Error", message: "No se pudo actualizar la reserva, por favor contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
                 
             }else{
-                print("Error - \(error!.localizedDescription)")
                 let alert = UIAlertController(title: "Error", message: "No se pudo actualizar la reserva, por favor contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)

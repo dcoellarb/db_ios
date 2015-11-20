@@ -61,7 +61,7 @@ class LoginViewController: UIViewController {
         password.leftViewMode = UITextFieldViewMode.Always
         
         
-        login.setTitle("LOGIN", forState: UIControlState.Normal)
+        login.setTitle("ENTRAR", forState: UIControlState.Normal)
         login.backgroundColor = UIColor(red: 231.0/255.0, green: 31.0/255.0, blue: 116.0/255.0, alpha: 1.0)
         login.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         login.titleLabel?.font = UIFont(name: (login.titleLabel?.font.fontName)!, size: 12)
@@ -88,16 +88,10 @@ class LoginViewController: UIViewController {
                 do{
                     let json: AnyObject? = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())
                     if let jsonResponse = json as? NSDictionary {
-                        if let jsonError = jsonResponse["error"]{
-                            if let jsonErrorArray = jsonError as? NSArray{
-                                for element in jsonErrorArray {
-                                    print("\(element) ")
-                                }
-                                
+                        if let _ = jsonResponse["error"]{
                                 let alert = UIAlertController(title: "Error", message: "No se pudo ingresar al sistema, por favor contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
                                 alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
                                 self.presentViewController(alert, animated: true, completion: nil)
-                            }
                         }
                         
                         if let codigo = jsonResponse["codigo"]{
@@ -112,11 +106,15 @@ class LoginViewController: UIViewController {
                         
                     }
                 } catch {
-                    print("error throw in catch")
+                    let alert = UIAlertController(title: "Error", message: "No se pudo ingresar al sistema, por favor contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
                 }
             
             }else{
-                print("Error - \(error!.localizedDescription)")
+                let alert = UIAlertController(title: "Error", message: "No se pudo ingresar al sistema, por favor contactese con Dreambox", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
         }
     }
